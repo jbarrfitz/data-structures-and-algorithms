@@ -18,7 +18,8 @@ array.
 
 Time: O(n), n = number of items in the array
 Space: O(n), a new array is created the same
-size as the original
+size as the original, where n = number of items
+in the array.
 
 
 
