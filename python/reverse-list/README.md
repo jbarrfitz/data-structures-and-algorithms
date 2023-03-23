@@ -1,5 +1,9 @@
 # Reverse List
-
+Write a function called reverseArray which
+takes an array as an argument. Without utilizing
+any of the built-in methods available to your
+language, return an array with elements in
+reversed order.
 
 ## Whiteboard Process
 
@@ -14,7 +18,8 @@ array.
 
 Time: O(n), n = number of items in the array
 Space: O(n), a new array is created the same
-size as the original
+size as the original, where n = number of items
+in the array.
 
 
 
