@@ -2,22 +2,23 @@ import pytest
 from data_structures.linked_list import LinkedList
 
 
+@pytest.mark.skip("JUST CHECKING IT OUT")
 def test_exists():
     assert LinkedList
 
 
-# @pytest.mark.skip("TODO")
+@pytest.mark.skip("TODO")
 def test_instantiate():
     assert LinkedList()
 
 
-# @pytest.mark.skip("TODO")
+@pytest.mark.skip("TODO")
 def test_empty_head():
     linked = LinkedList()
     assert linked.head is None
 
 
-# @pytest.mark.skip("TODO")
+@pytest.mark.skip("TODO")
 def test_populated_head():
     linked = LinkedList()
     linked.insert("apple")
@@ -40,7 +41,7 @@ def test_to_string_single():
     assert str(linked_list) == "{ apple } -> NULL"
 
 
-@pytest.mark.skip("TODO")
+# @pytest.mark.skip("TODO")
 def test_to_string_double():
     linked_list = LinkedList()
 

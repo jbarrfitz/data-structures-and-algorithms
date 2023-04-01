@@ -17,9 +17,27 @@ class LinkedList:
     def __init__(self, head=None):
         self.head = head
 
+    def __str__(self):
+        curr_node = self.head
+        node_strings = ""
+        while curr_node is not None:
+            if not node_strings:
+                node_strings = f"{{ {curr_node.value} }}"
+            else:
+                node_strings = f"{node_strings} -> {{ {curr_node.value} }}"
+            curr_node = curr_node.next_node
+        if not node_strings:
+            return "NULL"
+        return f"{node_strings} -> NULL"
+
     def insert(self, value):
-        old_head = self.head
-        self.head = Node(value, old_head)
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+        else:
+            old_head = self.head
+            self.head = new_node
+            new_node.next_node = old_head
 
     def includes(self, value):
         curr_node = self.head
