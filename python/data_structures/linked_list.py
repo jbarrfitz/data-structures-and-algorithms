@@ -44,7 +44,7 @@ class LinkedList:
         while curr_node is not None:
             if curr_node.value == value:
                 return True
-            curr_node = curr_node.next
+            curr_node = curr_node.next_node
         return False
 
 
