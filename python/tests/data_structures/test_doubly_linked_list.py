@@ -95,4 +95,14 @@ def test_head_has_no_prev():
 
     linked_list.insert(1)
 
-    assert not linked_list.head.prev_node
+    assert not linked_list.head.prev
+
+
+def test_tail_has_no_next():
+    linked_list = DoublyLinkedList()
+
+    linked_list.insert(8675309)
+    linked_list.insert(123456789)
+
+    assert not linked_list.tail.next
+
