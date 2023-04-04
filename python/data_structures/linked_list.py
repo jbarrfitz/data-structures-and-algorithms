@@ -20,7 +20,7 @@ class LinkedList:
     def __str__(self):
         curr_node = self.head
         node_strings = ""
-        while curr_node is not None:
+        while curr_node:
             if not node_strings:
                 node_strings = f"{{ {curr_node.value} }}"
             else:
@@ -32,7 +32,7 @@ class LinkedList:
 
     def insert(self, value):
         new_node = Node(value)
-        if self.head is None:
+        if not self.head:
             self.head = new_node
         else:
             old_head = self.head
@@ -41,7 +41,7 @@ class LinkedList:
 
     def includes(self, value):
         curr_node = self.head
-        while curr_node is not None:
+        while curr_node:
             if curr_node.value == value:
                 return True
             curr_node = curr_node.next_node

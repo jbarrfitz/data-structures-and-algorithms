@@ -27,7 +27,7 @@ class DoublyLinkedList:
             curr_node = curr_node.next_node
         if node_strings == "NULL":
             return node_strings
-        return f"{node_strings} <-> NULL "
+        return f"{node_strings} <-> NULL"
 
     def insert(self, value):
         new_node = DoubleNode(value)
@@ -41,7 +41,7 @@ class DoublyLinkedList:
 
     def includes(self, value):
         curr_node = self.head
-        while curr_node is not None:
+        while curr_node:
             if curr_node.value == value:
                 return True
             curr_node = curr_node.next_node

@@ -1,5 +1,5 @@
 import pytest
-from data_structures.doubly_linked_list import DoublyLinkedList
+from data_structures.doubly_linked_list import DoublyLinkedList, DoubleNode
 
 
 def test_exists():
@@ -21,36 +21,32 @@ def test_populated_head():
     assert linked.head.value == "apple"
 
 
-@pytest.mark.skip("TODO")
 def test_to_string_empty():
     linked_list = DoublyLinkedList()
 
     assert str(linked_list) == "NULL"
 
 
-@pytest.mark.skip("TODO")
 def test_to_string_single():
     linked_list = DoublyLinkedList()
 
     linked_list.insert("apple")
 
-    assert str(linked_list) == "{ apple } -> NULL"
+    assert str(linked_list) == "NULL <-> { apple } <-> NULL"
 
 
-@pytest.mark.skip("TODO")
 def test_to_string_double():
     linked_list = DoublyLinkedList()
 
     linked_list.insert("apple")
 
-    assert str(linked_list) == "{ apple } -> NULL"
+    assert str(linked_list) == "NULL <-> { apple } <-> NULL"
 
     linked_list.insert("banana")
 
-    assert str(linked_list) == "{ banana } -> { apple } -> NULL"
+    assert str(linked_list) == "NULL <-> { banana } <-> { apple } <-> NULL"
 
 
-@pytest.mark.skip("TODO")
 def test_includes_true():
     linked_list = DoublyLinkedList()
 
@@ -61,7 +57,6 @@ def test_includes_true():
     assert linked_list.includes("apple")
 
 
-@pytest.mark.skip("TODO")
 def test_includes_false():
     linked_list = DoublyLinkedList()
 
@@ -71,14 +66,13 @@ def test_includes_false():
 
     assert not linked_list.includes("cucumber")
 
-@pytest.mark.skip("TODO")
+
 def test_includes_empty_list():
     linked_list = DoublyLinkedList()
 
     assert not linked_list.includes(1)
 
 
-@pytest.mark.skip("TODO")
 def test_multiple_inserts():
     linked_list = DoublyLinkedList()
 
@@ -86,12 +80,19 @@ def test_multiple_inserts():
     linked_list.insert(linked_list.head.value)
     linked_list.insert(linked_list.head.value)
 
-    assert str(linked_list) == "{ 7 } -> { 7 } -> { 7 } -> NULL"
+    assert str(linked_list) == "NULL <-> { 7 } <-> { 7 } <-> { 7 } <-> NULL"
 
 
-@pytest.mark.skip("TODO")
 def test_insert_none():
     linked_list = DoublyLinkedList()
 
     linked_list.insert(None)
-    assert str(linked_list) == "{ None } -> NULL"
+    assert str(linked_list) == "NULL <-> { None } <-> NULL"
+
+
+def test_head_has_no_prev():
+    linked_list = DoublyLinkedList()
+
+    linked_list.insert(1)
+
+    assert not linked_list.head.prev_node
