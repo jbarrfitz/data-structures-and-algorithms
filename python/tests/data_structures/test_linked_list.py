@@ -86,7 +86,7 @@ def test_multiple_inserts():
 
     linked_list.insert(7)
     linked_list.insert(linked_list.head.value)
-    linked_list.insert(linked_list.head.value)
+    linked_list.insert(linked_list.head.next.value)
 
     assert str(linked_list) == "{ 7 } -> { 7 } -> { 7 } -> NULL"
 
