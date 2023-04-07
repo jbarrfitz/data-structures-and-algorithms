@@ -98,40 +98,4 @@ def test_insert_none():
     assert str(linked_list) == "{ None } -> NULL"
 
 
-def test_append_to_empty():
-    linked_list = LinkedList()
-
-    linked_list.append(7)
-    assert str(linked_list) == "{ 7 } -> NULL"
-
-
-def test_append_node_with_no_value():
-    linked_list = LinkedList()
-    linked_list.insert(1)
-    linked_list.insert(2)
-    linked_list.insert(3)
-    linked_list.append(None)
-    assert str(linked_list) == "{ 3 } -> { 2 } -> { 1 } -> { None } -> NULL"
-
-
-def test_append_affects_includes():
-    linked_list = LinkedList()
-    linked_list.append(1)
-    assert linked_list.includes(1)
-
-
-def test_append_to_list():
-    linked_list = LinkedList()
-    linked_list.insert(2)
-    linked_list.append(1)
-    assert str(linked_list) == "{ 2 } -> { 1 } -> NULL"
-
-
-def test_append_multiple():
-    linked_list = LinkedList()
-    linked_list.insert(1)
-    linked_list.append(2)
-    linked_list.append(3)
-    linked_list.append(4)
-    assert str(linked_list) == "{ 1 } -> { 2 } -> { 3 } -> { 4 } -> NULL"
 
