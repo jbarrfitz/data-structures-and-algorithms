@@ -94,6 +94,30 @@ class LinkedList:
         if not inserted:
             raise TargetError(f"Value {value} not found in linked list")
 
+    def delete(self, value):
+        # Handle empty linked list
+        if self.head is None:
+            raise TargetError(f"No nodes in linked list to delete")
+        curr_node = self.head
+        deleted = False
+        # Handle deleting the head
+        if curr_node.value == value:
+            if curr_node.next:
+                # if there are nodes after the head
+                self.head == curr_node.next
+                deleted = True
+            else:
+                # if the head is the only node
+                self.head = None
+                deleted = True
+        while curr_node.next and not deleted:
+            prev_node = curr_node
+            curr_node = curr_node.next
+            if curr_node.value == value:
+                prev_node.next = curr_node.next
+        if curr_node.value == value:
+            prev_node.next = None
+
 
 class TargetError(Exception):
     pass
