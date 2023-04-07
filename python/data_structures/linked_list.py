@@ -74,6 +74,26 @@ class LinkedList:
             if not inserted:
                 raise TargetError(f"Value {value} not found in linked list")
 
+    def insert_after(self, value, new_value):
+        new_node = Node(new_value)
+        curr_node = self.head
+        inserted = False
+        if not curr_node:
+            raise TargetError(f"No nodes in linked list to insert after")
+        while curr_node:
+            if curr_node.value == value and not inserted:
+                if curr_node.next:
+                    old_next = curr_node.next
+                    curr_node.next = new_node
+                    new_node.next = old_next
+                    inserted = True
+                else:
+                    curr_node.next = new_node
+                    inserted = True
+            curr_node = curr_node.next
+        if not inserted:
+            raise TargetError(f"Value {value} not found in linked list")
+
 
 class TargetError(Exception):
     pass

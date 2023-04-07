@@ -78,7 +78,6 @@ def test_insert_before_empty():
         linked_list.insert_before("radish", "zucchinni")
 
 
-@pytest.mark.skip("TODO")
 def test_insert_before_missing():
     linked_list = LinkedList()
 
@@ -88,7 +87,7 @@ def test_insert_before_missing():
         linked_list.insert_before("radish", "zucchinni")
 
 
-def test_insert_happens_only_once():
+def test_insert_before_happens_only_once():
     # Jerry's Test
     linked_list = LinkedList()
     linked_list.append(1)
@@ -100,7 +99,24 @@ def test_insert_happens_only_once():
         "{ 1 } -> { 999 } -> { 2 } -> { 3 } -> { 2 } -> NULL")
 
 
-@pytest.mark.skip("TODO")
+def test_insert_before_head_null_item():
+    # Jerry's Test
+    linked_list = LinkedList()
+    linked_list.append(1)
+    linked_list.insert_before(1, None)
+    assert str(linked_list) == "{ None } -> { 1 } -> NULL"
+
+
+def test_insert_before_last():
+    # Jerry's Test
+    linked_list = LinkedList()
+    linked_list.insert(1)
+    linked_list.insert(2)
+    linked_list.insert(3)
+    linked_list.insert_before(1, 4)
+    assert str(linked_list) == "{ 3 } -> { 2 } -> { 4 } -> { 1 } -> NULL"
+
+
 def test_insert_after():
     linked_list = LinkedList()
 
@@ -113,7 +129,6 @@ def test_insert_after():
     assert str(linked_list) == "{ banana } -> { cucumber } -> { apple } -> NULL"
 
 
-@pytest.mark.skip("TODO")
 def test_insert_after_empty():
     linked_list = LinkedList()
 
@@ -121,7 +136,6 @@ def test_insert_after_empty():
         linked_list.insert_after("radish", "zucchinni")
 
 
-@pytest.mark.skip("TODO")
 def test_insert_after_missing():
     linked_list = LinkedList()
 
@@ -131,7 +145,32 @@ def test_insert_after_missing():
         linked_list.insert_after("radish", "zucchinni")
 
 
-# JERRY TESTS
+def test_insert_after_only_happens_once():
+    # Jerry's Test
+    linked_list = LinkedList()
+    linked_list.append(1)
+    linked_list.append(2)
+    linked_list.append(1)
+    linked_list.append(2)
+    linked_list.append(1)
+    linked_list.insert_after(1, 999)
+    assert str(linked_list) == (
+        "{ 1 } -> { 999 } -> { 2 } -> { 1 } -> { 2 } -> { 1 } -> NULL")
 
 
+def test_insert_after_affects_include():
+    # Jerry's Test
+    linked_list = LinkedList()
+    linked_list.append(1)
+    linked_list.append(3)
+    linked_list.insert_after(1, 2)
+    assert linked_list.includes(2)
 
+
+def test_insert_after_last_node():
+    # Jerry's Test
+    linked_list = LinkedList()
+    linked_list.append(1)
+    linked_list.append(2)
+    linked_list.insert_after(2, 3)
+    assert str(linked_list) == "{ 1 } -> { 2 } -> { 3 } -> NULL"
