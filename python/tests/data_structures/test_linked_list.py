@@ -96,3 +96,6 @@ def test_insert_none():
 
     linked_list.insert(None)
     assert str(linked_list) == "{ None } -> NULL"
+
+
+
