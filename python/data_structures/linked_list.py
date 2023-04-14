@@ -1,14 +1,3 @@
-class Node:
-    """
-    Node belonging to a LinkedList. Contains its own value and a reference
-    to the next node in the LinkedList.
-    """
-
-    def __init__(self, value, next=None):
-        self.value = value
-        self.next = next
-
-
 class LinkedList:
     """
     Structure containing nodes. This class contains only a reference to the
@@ -58,7 +47,7 @@ class LinkedList:
         curr_node = self.head
         inserted = False
         if not curr_node:
-            raise TargetError(f"No nodes in linked list to insert before")
+            raise TargetError("No nodes in linked list to insert before")
         if curr_node.value == value:
             old_head = self.head
             self.head = new_node
@@ -79,7 +68,7 @@ class LinkedList:
         curr_node = self.head
         inserted = False
         if not curr_node:
-            raise TargetError(f"No nodes in linked list to insert after")
+            raise TargetError("No nodes in linked list to insert after")
         while curr_node:
             if curr_node.value == value and not inserted:
                 if curr_node.next:
@@ -93,6 +82,58 @@ class LinkedList:
             curr_node = curr_node.next
         if not inserted:
             raise TargetError(f"Value {value} not found in linked list")
+
+    def kth_from_end(self, k):
+        if type(k) != int or k < 0:
+            raise TargetError("Invalid input; k must be a non-negative integer")
+        curr_node = self.head
+        diff = 0
+        while diff < k:
+            curr_node = curr_node.next
+            diff += 1
+            if not curr_node:
+                raise TargetError(
+                    f"Linked list is not long enough to accommodate k of {k}")
+        kth_node = self.head
+        while curr_node.next:
+            curr_node = curr_node.next
+            kth_node = kth_node.next
+        return kth_node.value
+
+    def delete(self, value):
+        # Handle empty linked list
+        if self.head is None:
+            raise TargetError("No nodes in linked list to delete")
+        curr_node = self.head
+        deleted = False
+        # Handle deleting the head
+        if curr_node.value == value:
+            if curr_node.next:
+                # if there are nodes after the head
+                self.head == curr_node.next
+                deleted = True
+            else:
+                # if the head is the only node
+                self.head = None
+                deleted = True
+        while curr_node.next and not deleted:
+            prev_node = curr_node
+            curr_node = curr_node.next
+            if curr_node.value == value:
+                prev_node.next = curr_node.next
+        if curr_node.value == value:
+            prev_node.next = None
+
+
+class Node:
+    """
+    Node belonging to a LinkedList. Contains its own value and a reference
+    to the next node in the LinkedList.
+    """
+
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
 
 
 class TargetError(Exception):
