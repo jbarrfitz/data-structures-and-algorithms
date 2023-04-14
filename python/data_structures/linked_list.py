@@ -47,7 +47,7 @@ class LinkedList:
         curr_node = self.head
         inserted = False
         if not curr_node:
-            raise TargetError(f"No nodes in linked list to insert before")
+            raise TargetError("No nodes in linked list to insert before")
         if curr_node.value == value:
             old_head = self.head
             self.head = new_node
@@ -68,7 +68,7 @@ class LinkedList:
         curr_node = self.head
         inserted = False
         if not curr_node:
-            raise TargetError(f"No nodes in linked list to insert after")
+            raise TargetError("No nodes in linked list to insert after")
         while curr_node:
             if curr_node.value == value and not inserted:
                 if curr_node.next:
@@ -103,7 +103,7 @@ class LinkedList:
     def delete(self, value):
         # Handle empty linked list
         if self.head is None:
-            raise TargetError(f"No nodes in linked list to delete")
+            raise TargetError("No nodes in linked list to delete")
         curr_node = self.head
         deleted = False
         # Handle deleting the head
@@ -138,32 +138,3 @@ class Node:
 
 class TargetError(Exception):
     pass
-
-
-def zip_lists(list1, list2):
-    if not list1:
-        return list2
-    if not list2:
-        return list1
-    point1 = list1.head
-    point2 = list2.head
-    most_recent = None
-    while point1 and point2:
-        temp_next1 = point1.next
-        temp_next2 = point2.next
-        if not most_recent:
-            most_recent = point1
-            point1.next = point2
-            most_recent = point2
-        else:
-            most_recent.next = point1.next
-            point1.next = point2
-            most_recent = point2
-        point2.next = temp_next1
-        point1 = temp_next1
-        point2 = temp_next2
-    if point1:
-        most_recent.next = point1
-    if point2:
-        most_recent.next = point2
-    return list1
