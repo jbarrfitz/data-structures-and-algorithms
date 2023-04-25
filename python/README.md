@@ -12,3 +12,5 @@
 - [Linked Lists](data_structures/linked_list.py)
   - [Doubly Linked Lists](data_structures/doubly_linked_list.py)
   - [Zip Linked Lists](code_challenges/linked_list_zip.py)
+- [Stacks](data_structures/stack.py) | [Queues](data_structures/queue.py)
+  - [PseudoQueue](code_challenges/stack_queue_pseudo.py)
