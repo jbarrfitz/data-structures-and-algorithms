@@ -99,6 +99,7 @@ def test_in_order_with_null_values():
     expected = [1, None, 2]
     assert actual == expected
 
+
 def test_pre_order_mixed_input_types():
     test_tree = BinaryTree()
     test_tree.root = Node("Hooray")
