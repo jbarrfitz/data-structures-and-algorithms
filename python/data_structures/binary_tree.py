@@ -35,6 +35,29 @@ class BinaryTree:
             self._post_order_recursive(curr_node.right, result)
             result.append(curr_node.value)
 
+    def find_maximum_value(self):
+        max_val = float('-inf')
+
+        def _traverse(root):
+            nonlocal max_val
+            if root:
+                if root.value > max_val:
+                    max_val = root.value
+                _traverse(root.left)
+                _traverse(root.right)
+
+        _traverse(self.root)
+
+        return max_val
+
+    def _find_max_recursive(self, curr_node, max_val):
+        if curr_node:
+            self._find_max_recursive(curr_node.left, max_val)
+            self._find_max_recursive(curr_node.right, max_val)
+            if curr_node.value > max_val:
+                max_val = curr_node.value
+            _find_max_recursive()
+
 
 class Node:
     def __init__(self, value, left=None, right=None):
