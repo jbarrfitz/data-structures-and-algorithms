@@ -2,7 +2,7 @@
 Find the maximum value in a binary tree
 
 ## Whiteboard Process
-<!-- Embedded whiteboard image -->
+![Whiteboard](tree_max_whiteboard.png)
 
 ## Approach & Efficiency
 I completed a depth-first traversal (preorder) of the tree and
