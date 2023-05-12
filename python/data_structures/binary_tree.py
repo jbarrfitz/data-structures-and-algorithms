@@ -50,14 +50,6 @@ class BinaryTree:
 
         return max_val
 
-    def _find_max_recursive(self, curr_node, max_val):
-        if curr_node:
-            self._find_max_recursive(curr_node.left, max_val)
-            self._find_max_recursive(curr_node.right, max_val)
-            if curr_node.value > max_val:
-                max_val = curr_node.value
-            _find_max_recursive()
-
 
 class Node:
     def __init__(self, value, left=None, right=None):
