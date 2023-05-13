@@ -1,4 +1,20 @@
-from data_structures.queue import Queue
+class Animal:
+    def __init__(self, next=None):
+        self.next = next
+
+
+class Cat(Animal):
+    def __init__(self, species="cat", name=""):
+        super().__init__(None)
+        self.species = species
+        self.name = name
+
+
+class Dog(Animal):
+    def __init__(self, species="dog", name=""):
+        super().__init__(None)
+        self.species = species
+        self.name = name
 
 
 class AnimalShelter:
@@ -7,53 +23,31 @@ class AnimalShelter:
         self.tail = tail
 
     def enqueue(self, animal):
-        if not animal:
-            return
-        if animal.lower() == "dog":
-            new_animal = Dog()
-        elif animal.lower() == "cat":
-            new_animal = Cat()
-        else:
-            return
-        if not self.tail:
-            self.tail = self.front = new_animal
-        else:
-            self.tail.next = new_animal
-            self.tail = new_animal
-
-    def dequeue(self, pref=None):
         if not self.front:
-            return
-        if pref == "dog":
-            match_class = "Dog"
-        elif pref == "cat":
-            match_class = "Cat"
+            self.front = self.tail = animal
         else:
-            return
-        curr_animal = self.front.value
-        while True:
-            if isinstance(curr_animal, match_class):
+            self.tail.next = animal
+            self.tail = self.tail.next
+
+    def dequeue(self, pref=""):
+        if not self.front:
+            return None
+        if not pref:
+            dequeued = self.front
+            self.front = self.front.next
+            return dequeued
+        if pref.lower() != "dog" and pref.lower() != "cat":
+            return None
+        queue = []
+        curr_animal = self.front
+        dequeued = None
+        while curr_animal:
+            if pref.lower() == curr_animal.species and dequeued is None:
                 dequeued = curr_animal
-
-        self.front = self.front.next
+                self.front = self.front.next
+                break
+            else:
+                queue.append(curr_animal)
+                curr_animal = curr_animal.next
+                self.front = self.front.next
         return dequeued
-
-    def peek(self):
-        if not self.front:
-            raise InvalidOperationError
-        return self.front.value
-
-    def is_empty(self):
-        return not self.front
-
-
-class Dog:
-    def __init__(self, name="", next=None):
-        self.name = name
-        self.next = next
-
-
-class Cat:
-    def __init__(self, name="", next=None):
-        self.name = name
-        self.next = next
