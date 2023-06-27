@@ -1,34 +1,55 @@
 import pytest
+
 from data_structures.hashtable import Hashtable
 
 
-def test_exists():
-    assert Hashtable
+# Assuming the Hashtable class is defined and imported here
+
+def test_set():
+    table = Hashtable()
+    table.set("name", "John")
+    assert table.get("name") == "John"
 
 
-@pytest.mark.skip("TODO")
-def test_get_apple():
-    hashtable = Hashtable()
-    hashtable.set("apple", "Used for apple sauce")
-    actual = hashtable.get("apple")
-    expected = "Used for apple sauce"
-    assert actual == expected
+def test_get_existing_key():
+    table = Hashtable()
+    table.set("name", "John")
+    assert table.get("name") == "John"
 
 
-@pytest.mark.skip("TODO")
-def test_internals():
-    hashtable = Hashtable(1024)
-    hashtable.set("ahmad", 30)
-    hashtable.set("silent", True)
-    hashtable.set("listen", "to me")
+def test_get_nonexistent_key():
+    table = Hashtable()
+    with pytest.raises(KeyError):
+        table.get("age")
 
-    actual = []
 
-    # NOTE: purposely breaking encapsulation to test the "internals" of Hashmap
-    for item in hashtable._buckets:
-        if item:
-            actual.append(item.display())
+def test_keys():
+    table = Hashtable()
+    table.set("name", "John")
+    table.set("age", 25)
+    table.set("country", "USA")
+    assert set(table.keys()) == {"name", "age", "country"}
 
-    expected = [[["silent", True], ["listen", "to me"]], [["ahmad", 30]]]
 
-    assert actual == expected
+def test_collision_handling():
+    table = Hashtable()
+    # Force a collision by setting two keys that have the same hash
+    table.set("name", "John")
+    table.set("mane", "Jane")
+    assert table.get("name") == "John"
+    assert table.get("mane") == "Jane"
+
+
+def test_retrieve_value_from_bucket_with_collision():
+    table = Hashtable()
+    table.set("name", "John")
+    table.set("mane", "Jane")
+    assert table.get("name") == "John"
+    assert table.get("mane") == "Jane"
+
+
+def test_hash_in_range():
+    table = Hashtable()
+    key = "name"
+    index = table.hash(key)
+    assert 0 <= index < table.size
