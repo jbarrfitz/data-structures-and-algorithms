@@ -7,6 +7,7 @@ inserting the element and shifting it to the right until it finds
 its correct position among the currently sorted elements.
 
 ## Pseudocode
+
 ```pseudocode
 Insert(int[] sorted, int value)
   initialize i to 0
@@ -26,6 +27,7 @@ InsertionSort(int[] input)
     Insert(sorted, input[i])
   return sorted
 ```
+
 ## Trace
 
 ### Sample List
@@ -58,4 +60,5 @@ def insertion_sort(input):
 ## Big O
 
 ### Time Efficiency: O(n^2), as you are essentially creating nested loops that iterate over the elements
+
 ### Space Efficiency: O(n), as a new list is being created the same size as the original
