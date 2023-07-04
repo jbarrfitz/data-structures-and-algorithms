@@ -5,6 +5,7 @@ to be sorted is divided into smaller sub-lists. It does this
 recursively, dividing them until the sub-lists have 0 or 1
 elements in them. Once that has been accomplished, the sub-
 lists are re-merged in order.
+
 ## Pseudocode
 
 ```pseudocode
