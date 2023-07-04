@@ -118,4 +118,5 @@ O(n), plus then merging all the sub-lists together O(n).
 
 ### Space Efficiency
 
-Keeping the temporary sublists requires O(n) space.
+Keeping the temporary sublists requires O(n) space, as they will contain as many
+elements as the original list.
